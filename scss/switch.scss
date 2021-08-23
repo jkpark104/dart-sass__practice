@@ -1,0 +1,116 @@
+@use 'sass:math';
+// 나누기 연산 가능해짐
+@use './base'as *;
+@use './color'as *;
+@use './function'as *;
+@use './form'as *;
+
+.form-switch {
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+
+  &__switch {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin-right: 80px;
+    
+  }
+
+  &__switch:checked + &__label:after {
+    transform: translateX(16px);
+  }
+
+  &__switch:checked + &__label:before {
+    background-color: $form-switch-bg-color;
+  }
+
+  &__switch:disabled + &__label {
+    opacity: .5;
+  }
+
+  &__label {
+    $h: 24px;
+    position: relative;
+    height: $h;
+    line-height: $h;
+
+    padding-left: rem(50px);
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+    }
+
+    &::before {
+      width: rem(40px);
+      top: 0;
+      left: 0;
+      height: 100%;
+      border-radius: math.div($h, 2);
+      // background-color: $form-switch-bg-color;
+      background-color: $gray6;
+    }
+
+    &::after {
+      top: rem(4px);
+      left: rem(4px);
+      width: rem(16px);
+      height: rem(16px);
+      border-radius: 50%;
+      background-color: $form-switch-button-color;
+      transition: transform 300ms;
+    }
+  }
+}
+
+// .form-group {
+//   display: flex;
+//   align-items: center;
+//   gap: 10px;
+// }
+
+// .form-switch__switch {
+//   position: relative;
+//   width: 50px;
+//   height: 25px;
+//   background-color: $blue;
+//   border-radius: 20px;
+//   cursor: pointer;
+
+//   &::before {
+//     position: absolute;
+//     content: "";
+//     border-radius: 50%;
+//     background: $white;
+//     width: 15px;
+//     height: 15px;
+//     top: 0;
+//     bottom: 0;
+//     left: 3px;
+//     margin: auto;
+//     transition: all 400ms ease;
+//   }
+
+//   &:checked:before {
+//     position: absolute;
+//     content: "";
+//     border-radius: 50%;
+//     background: $white;
+//     width: 15px;
+//     height: 15px;
+//     top: 0;
+//     bottom: 0;
+//     // left: 3px;
+//     transform: translateX(30px);
+//     margin: auto;
+//   }
+
+//   &:disabled {
+//     opacity: .5;
+//   }
+// }
